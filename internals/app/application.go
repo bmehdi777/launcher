@@ -1,19 +1,21 @@
 package app
 
+import (
+	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/app"
+)
+
 type Application struct {
-	model Model
+	model  *Model
+	fApp    *fyne.App
+	fWindow *fyne.Window
+	fCanvas *fyne.Canvas
 }
 
 func (a *Application) Run() error {
-	err := a.eventLoop()
-	return err
-}
-func (a *Application) eventLoop() error {
-	for {}
-	return nil
-}
-func (a *Application) render() error {
-
-
+	app := Application {
+		model: &Model{},
+		fApp: &app.New(),
+	}
 	return nil
 }

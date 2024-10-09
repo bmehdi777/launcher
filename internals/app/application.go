@@ -6,16 +6,26 @@ import (
 )
 
 type Application struct {
-	model  *Model
+	model   *Model
 	fApp    *fyne.App
 	fWindow *fyne.Window
 	fCanvas *fyne.Canvas
 }
 
-func (a *Application) Run() error {
-	app := Application {
+func NewApp() Application {
+	fApp := app.New()
+	fWindow := fApp.NewWindow("Launcher")
+
+	app := Application{
 		model: &Model{},
-		fApp: &app.New(),
+		fApp:  &fApp,
+		fWindow: &fWindow,
 	}
+
+	return app
+}
+
+func (a *Application) Run() error {
+	(*a.fWindow).ShowAndRun()
 	return nil
 }

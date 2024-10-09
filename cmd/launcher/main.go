@@ -1,26 +1,16 @@
 package main
 
 import (
-	"image/color"
+	"fmt"
+	"os"
 
-	"fyne.io/fyne/v2"
-	"fyne.io/fyne/v2/app"
-	"fyne.io/fyne/v2/canvas"
-	"fyne.io/fyne/v2/container"
-	"fyne.io/fyne/v2/widget"
+	"github.com/bmehdi777/launcher/internals/app"
 )
 
 func main() {
-	myApp := app.New()
-	myWindow := myApp.NewWindow("Test")
-	myCanvas := myWindow.Canvas()
-
-	blue := color.NRGBA{R: 0, G: 0, B: 180, A: 255}
-	rect := canvas.NewRectangle(blue)
-
-	content := container.NewWithoutLayout(rect, widget.NewEntry())
-	myCanvas.SetContent(content)
-
-	myWindow.Resize(fyne.NewSize(1000, 200))
-	myWindow.ShowAndRun()
+	appli := app.NewApp()
+	if err := appli.Run(); err != nil {
+		fmt.Println("Error : ", err)
+		os.Exit(1)
+	}
 }
